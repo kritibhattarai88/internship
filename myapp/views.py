@@ -1,12 +1,17 @@
+import re
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Testimonial,Course,Blog
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from datetime import datetime
+from django.core.mail import send_mail,EmailMessage
 from django.contrib.auth.models import User
 
 
 # Create your views here.
+date = datetime.now().year
+
 def base(request):
     return render(request, 'base.html')
 
@@ -22,12 +27,38 @@ def about(request):
     return render(request, 'main/about.html')
 
 def contact(request):
-    return render(request, 'main/contact.html')
+    if request.method == 'POST':
+        name= request.POST['name']
+        email= request.POST['email']
+        purpose= request.POST['purpose']
+        message= request.POST['message']
+
+        if not re.match(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", email):
+            messages.error(request, "Invalid email")
+            return redirect("contact")
+        else:
+            try:
+                email_message = EmailMessage(
+                subject='Form submission',
+                body=message,
+                from_email="bhattaraikriti.77@gmail.com",  # Your verified email address
+                to=["bhattaraikriti.77@gmail.com"],  # Recipient's email address
+                headers={"Reply-To": email}  # User's email in Reply-To header
+            )
+                email_message.send(fail_silently=False)
+                messages.success(request, "Email has been sent!!")
+                return redirect("home")
+            except Exception as e:
+                messages.error(request, f"Error sending email: {e}")
+                return redirect("contact")
+
+    return render(request, 'main/contact.html', {"date":date})
 
 def course(request):
     course = Course.objects.all()
     context2={
         "courses":course,
+        "date":date,
     }
     return render(request, 'main/course.html',context2)
 
@@ -36,11 +67,11 @@ def course(request):
 #     return render(request, 'main/blog.html')
 def blog_list(request):
     blogs = Blog.objects.all()
-    return render(request, 'main/blog_list.html', {'blogs': blogs})
+    return render(request, 'main/blog_list.html', {'blogs': blogs, 'date':date})
 
 def blog_detail(request, slug):
     blog = get_object_or_404(Blog, slug=slug)
-    return render(request, 'main/blog_detail.html', {'blog': blog})
+    return render(request, 'main/blog_detail.html', {'blog': blog, 'date':date})
 
 # +++++======Authentication section======+++++++++++
 
