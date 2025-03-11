@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+  <!-- Main Banner Section -->
+  <section class="banner-section" style="background: linear-gradient(135deg, #6a11cb, #2575fc); padding: 80px 0;">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Left Side: Text and CTAs -->
+        <div class="col-md-7 text-white">
+          <h1 class="display-4 fw-bold">Welcome to IT Training Hub</h1>
+          <p class="lead">Your gateway to IT training and career success.</p>
+          
+          <!-- Rotating Slides (Placeholder) -->
+          <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <h3><i class="fas fa-laptop-code me-2"></i>Web Development Course</h3>
+                <p>Learn HTML, CSS, JavaScript, and more. Start your journey today!</p>
+              </div>
+              <div class="carousel-item">
+                <h3><i class="fas fa-tags me-2"></i>10% Off for January Batch!</h3>
+                <p>Enroll now and get a discount on our courses.</p>
+              </div>
+              <div class="carousel-item">
+                <h3><i class="fas fa-rocket me-2"></i>New Python Course Launched</h3>
+                <p>Master Python programming with our expert instructors.</p>
+              </div>
+            </div>
+            <!-- Removed Carousel Controls -->
+          </div>
+
+          <!-- Call-to-Action Buttons -->
+          <div class="cta-buttons mt-4">
+            <a href="#" class="btn btn-light btn-lg me-3"><i class="fas fa-user-plus me-2"></i>Enroll Now</a>
+            <a href="{% url 'course' %}" class="btn btn-outline-light btn-lg me-3"><i class="fas fa-book me-2"></i>View Courses</a>
+          </div>
+        </div>
+
+        <!-- Right Side: Image -->
+        <div class="col-md-5 d-flex justify-content-center">
+          <img src="{% static 'images/homepage.png' %}" alt="IT Training" class="img-fluid rounded-circle shadow" style="max-width: 100%; height: auto; object-fit: cover; aspect-ratio: 1/1;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="why-choose-us py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5">Why Choose Us?</h2>
+      <div class="row text-center">
+        <!-- Industry Experts -->
+        <div class="col-md-4 mb-4">
+          <div class="icon-wrapper mb-3">
+            <i class="fas fa-user-tie fa-3x text-primary"></i>
+          </div>
+          <h4>Industry Experts</h4>
+          <p class="text-muted">Learn from experienced professionals with real-world IT expertise.</p>
+        </div>
+
+        <!-- Certification Preparation -->
+        <div class="col-md-4 mb-4">
+          <div class="icon-wrapper mb-3">
+            <i class="fas fa-certificate fa-3x text-primary"></i>
+          </div>
+          <h4>Certification Prep</h4>
+          <p class="text-muted">Get ready for globally recognized certifications with our tailored courses.</p>
+        </div>
+
+        <!-- Corporate Workshops -->
+        <div class="col-md-4 mb-4">
+          <div class="icon-wrapper mb-3">
+            <i class="fas fa-chalkboard-teacher fa-3x text-primary"></i>
+          </div>
+          <h4>Corporate Workshops</h4>
+          <p class="text-muted">Customized training programs designed for your organization's needs.</p>
+        </div>
+      </div>
+
+      <!-- Success Stats -->
+      <div class="row mt-5">
+        <div class="col-md-12 text-center">
+          <h4 class="fw-bold"><i class="fas fa-users me-2 text-primary"></i>Over 5,000 Students Trained & Placed</h4>
+          <p class="text-muted">Join our community of successful learners and start your IT career today!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- Testimonials Section -->
+<div class="container my-3" data-aos="fade-down" data-aos-duration="1000">
+  <h2 class="text-center">Testimonials</h2>
+  <p class="text-muted text-center mb-5">Learning communicate to global world and build a bright future and career development, increase your skill with our histudy.</p>
+  <!-- Testimonial Carousel -->
+  <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {% for testimonial in testimonials|slice:":3" %}  <!-- First 3 testimonials -->
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          {% for testimonial in testimonials %}
+          <div class="col">
+            <div class="card h-100 shadow-sm text-center p-3">
+              <img src="{% if testimonial.photo %}{{ testimonial.photo.url }}{% else %}{% static 'images/default-user.png' %}{% endif %}" class="rounded-circle mx-auto" alt="{{ testimonial.student_name }}" width="100" height="100">
+              <div class="card-body">
+                <h5 class="card-title">{{ testimonial.student_name }}</h5>
+                <p class="text-muted">{{ testimonial.postion }}</p>
+                <p class="card-text">"{{ testimonial.testimonial }}"</p>
+                <div class="text-warning">
+                  {% for _ in "12345" %}
+                    {% if forloop.counter <= testimonial.rating %}
+                      <i class="fas fa-star"></i>
+                    {% else %}
+                      <i class="far fa-star"></i>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% if forloop.counter|divisibleby:3 and not forloop.last %}
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- Carousel Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+<!-- More Inquiries Section -->
+<section class="inquiries-section py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 text-center">
+        <!-- Card for More Inquiries -->
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h3 class="card-title">Have More Questions?</h3>
+            <p class="card-text">We're here to help! Feel free to reach out to us for any inquiries or additional information.</p>
+            <!-- Contact Us Button -->
+            <a href="#contact" class="btn btn-primary btn-lg">
+              <i class="fas fa-envelope me-2"></i>Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

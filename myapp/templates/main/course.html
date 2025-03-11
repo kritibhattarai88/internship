@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Courses{% endblock title %}
+
+{% block content %}
+<!-- Courses Section -->
+<section class="courses-section py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Our Courses</h2>
+
+    <!-- Filters and Sorting -->
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <h5>Filters</h5>
+        <div class="d-flex flex-wrap gap-2">
+          <select class="form-select" aria-label="Skill Level">
+            <option selected>Skill Level</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+          <select class="form-select" aria-label="Duration">
+            <option selected>Duration</option>
+            <option value="short-term">Short-term</option>
+            <option value="long-term">Long-term</option>
+          </select>
+          <select class="form-select" aria-label="Price Range">
+            <option selected>Price Range</option>
+            <option value="low-to-high">Low to High</option>
+            <option value="high-to-low">High to Low</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h5>Sort By</h5>
+        <div class="d-flex flex-wrap gap-2">
+          <select class="form-select" aria-label="Sort By">
+            <option selected>Sort By</option>
+            <option value="popularity">Popularity</option>
+            <option value="newest">Newest First</option>
+            <option value="price-low-to-high">Price: Low to High</option>
+            <option value="price-high-to-low">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course Cards -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      {% for course in courses %}
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <!-- Course Image -->
+          {% if course.image %}
+          <img src="{{ course.image.url }}" class="card-img-top" alt="{{ course.name }}">
+          {% else %}
+          <img src="{% static 'images/default-course.jpg' %}" class="card-img-top" alt="Default Course Image">
+          {% endif %}
+
+          <div class="card-body">
+            <h5 class="card-title">{{ course.name }}</h5>
+            <p class="card-text">{{ course.description }}</p>
+            <ul class="list-unstyled">
+              <li><strong>Duration:</strong> {{ course.get_duration_display }}</li>
+              <li><strong>Fee:</strong> ${{ course.fee }}</li>
+              <li><strong>Skill Level:</strong> {{ course.get_skill_level_display }}</li>
+              <li><strong>Prerequisites:</strong> {{ course.prerequisites }}</li>
+            </ul>
+            <a href="#{{ course.name|slugify }}-syllabus" class="btn btn-outline-primary btn-sm">View Syllabus</a>
+          </div>
+
+          <!-- Instructor Section -->
+          <div class="card-footer bg-transparent">
+            <div class="d-flex align-items-center">
+              <img src="{% static 'images/default-instructor.jpg' %}" class="rounded-circle me-2" alt="Instructor" width="40" height="40">
+              <div>
+                <h6 class="mb-0">Instructor Name</h6>
+                <small class="text-muted">Instructor Bio</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Demo Class Button -->
+          <div class="card-footer bg-transparent">
+            <a href="#demo-class" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#demoClassModal">
+              <i class="fas fa-calendar me-2"></i>Book Demo Class
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Demo Class Modal -->
+<div class="modal fade" id="demoClassModal" tabindex="-1" aria-labelledby="demoClassModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="demoClassModalLabel">Book a Demo Class</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="courseName" class="form-label">Course Name</label>
+            <input type="text" class="form-control" id="courseName" value="Python Programming" readonly>
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="date" class="form-label">Select Date</label>
+            <input type="date" class="form-control" id="date" required>
+          </div>
+          <div class="mb-3">
+            <label for="time" class="form-label">Select Time</label>
+            <input type="time" class="form-control" id="time" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Book Now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

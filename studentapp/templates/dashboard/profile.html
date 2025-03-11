@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}My Profile{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg">
+        <div class="card-body p-5">
+          <h2 class="card-title text-center mb-4">My Profile</h2>
+          <div class="mb-3">
+            <strong>Username:</strong> {{ user.username }}
+          </div>
+          <div class="mb-3">
+            <strong>Email:</strong> {{ user.email }}
+          </div>
+          <div class="mb-3">
+            <strong>First Name:</strong> {{ user.first_name }}
+          </div>
+          <div class="mb-3">
+            <strong>Last Name:</strong> {{ user.last_name }}
+          </div>
+          <a href="#" class="btn btn-danger w-100">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

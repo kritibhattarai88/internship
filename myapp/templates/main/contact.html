@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Contact Us
+{% endblock title %}
+
+{% block content %}
+<!-- Contact Us Section -->
+<section class="contact-us-section py-5" style="background-color: #f8f9fa;">
+  <div class="container">
+    <h2 class="text-center mb-5">Contact Us</h2>
+
+    <div class="row">
+      <!-- Contact Form -->
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="card shadow-sm form-card"> <!-- Added custom class "form-card" -->
+          <div class="card-body">
+            <h3 class="card-title mb-4 text-center">Send Us a Message</h3>
+            <form>
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="purpose" class="form-label">Purpose</label>
+                <select class="form-select" id="purpose" required>
+                  <option value="" disabled selected>Select Purpose</option>
+                  <option value="course-inquiry">Course Inquiry</option>
+                  <option value="technical-support">Technical Support</option>
+                  <option value="general-inquiry">General Inquiry</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Location Details and Social Media Links -->
+      <div class="col-lg-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h3 class="card-title mb-4">Our Location</h3>
+            <ul class="list-unstyled">
+              <li class="mb-3">
+                <i class="fas fa-map-marker-alt me-2"></i>
+                <strong>Address:</strong>Milanchowk, Butwal
+              </li>
+              <li class="mb-3">
+                <i class="fas fa-phone me-2"></i>
+                <strong>Phone:</strong> +977-9806677440, +977-9846700981
+              </li>
+              <li class="mb-3">
+                <i class="fas fa-envelope me-2"></i>
+                <strong>Email:</strong>  traininghub@gmail.com
+              </li>
+            </ul>
+
+            <!-- Social Media Links -->
+            <h3 class="card-title mb-4">Follow Us</h3>
+            <div class="d-flex gap-3">
+              <a href="#" class="text-decoration-none">
+                <i class="fab fa-facebook fa-2x" style="color: #3b5998;"></i>
+              </a>
+              <a href="#" class="text-decoration-none">
+                <i class="fab fa-linkedin fa-2x" style="color: #0077b5;"></i>
+              </a>
+              <a href="#" class="text-decoration-none">
+                <i class="fab fa-instagram fa-2x" style="color: #e4405f;"></i>
+              </a>
+            </div>
+
+            <!-- Embedded Google Map -->
+            <div class="mt-4">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.89709814772!2d83.46130012370757!3d27.689575126278335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39968662af7e7e57%3A0x5a6ebfecb8ba4a16!2sMilan%20Chowk%2C%20Butwal%2032907!5e0!3m2!1sen!2snp!4v1741332701516!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

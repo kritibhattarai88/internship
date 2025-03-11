@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{{ blog.title }}
+{% endblock title %}
+
+{% block content %}
+<!-- Blog Detail Section -->
+<section class="blog-detail-section py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <!-- Blog Image -->
+        {% if blog.image %}
+        <img src="{{ blog.image.url }}" class="img-fluid rounded mb-4" alt="{{ blog.title }}">
+        {% else %}
+        <img src="{% static 'images/default-blog.jpg' %}" class="img-fluid rounded mb-4" alt="Default Blog Image">
+        {% endif %}
+
+        <!-- Blog Title -->
+        <h1 class="mb-4">{{ blog.title }}</h1>
+
+        <!-- Blog Metadata -->
+        <div class="d-flex align-items-center mb-4">
+          <small class="text-muted me-3">
+            <i class="fas fa-calendar me-1"></i>{{ blog.created_at|date:"F d, Y" }}
+          </small>
+          <small class="text-muted">
+            <i class="fas fa-tag me-1"></i>{{ blog.get_category_display }}
+          </small>
+        </div>
+
+        <!-- Blog Content -->
+        <div class="blog-content">
+          {{ blog.content|linebreaks }}
+        </div>
+
+        <!-- Back to Blog List -->
+        <div class="mt-5">
+          <a href="{% url 'blog_list' %}" class="btn btn-outline-primary">
+            <i class="fas fa-arrow-left me-2"></i>Back to Blog
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,575 @@
+.banner-section {
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 60px 0;
+  }
+  .banner-content {
+    display: flex;
+    align-items: center;
+  }
+  .banner-text {
+    max-width: 600px;
+  }
+  .banner-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  .cta-buttons .btn {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+ /* Custom CSS for Carousel Arrows */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%; 
+    z-index: 10; 
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border-radius: 50%; /* Circular shape */
+    padding: 10px; 
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: rgba(0, 0, 0, 0.8) !important; 
+}
+
+/* Inquiries Section */
+.inquiries-section {
+  padding: 60px 0;
+}
+
+.inquiries-section .card {
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Purple to blue gradient */
+  color: #ffffff; /* White text for better contrast */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inquiries-section .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.inquiries-section .card-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #ffffff; /* White text for the title */
+}
+
+.inquiries-section .card-text {
+  font-size: 1.1rem;
+  color: #e0e0e0; /* Light gray text for the description */
+  margin-bottom: 2rem;
+}
+
+.inquiries-section .btn-primary {
+  background-color: #ffffff; /* White button */
+  color: #2575fc; /* Blue text */
+  border: 2px solid #2575fc; /* Blue border */
+  padding: 10px 30px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.inquiries-section .btn-primary:hover {
+  background-color: #2575fc; /* Blue background on hover */
+  color: #ffffff; /* White text on hover */
+}
+
+/* Courses Section */
+.courses-section {
+  padding: 60px 0;
+}
+
+.courses-section .card {
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.courses-section .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.courses-section .card-img-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.courses-section .card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.courses-section .card-text {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+}
+
+.courses-section .card-footer {
+  border-top: none;
+  background-color: transparent;
+}
+
+.courses-section .btn-outline-primary {
+  border-color: #2575fc;
+  color: #2575fc;
+}
+
+.courses-section .btn-outline-primary:hover {
+  background-color: #2575fc;
+  color: #ffffff;
+}
+
+.courses-section .btn-primary {
+  background-color: #2575fc;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.courses-section .btn-primary:hover {
+  background-color: #1a5bbf;
+}
+
+/* Blog Section */
+.blog-section {
+  padding: 60px 0;
+  background-color: #e3f2fd; /* Light blue background */
+}
+
+.blog-section h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #0d47a1; /* Dark blue color for the heading */
+  text-transform: uppercase; /* Uppercase heading */
+}
+
+.blog-section .card {
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #ffffff; /* White background for cards */
+}
+
+.blog-section .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.blog-section .card-img-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.blog-section .card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #1a237e; /* Dark blue color for card titles */
+}
+
+.blog-section .card-text {
+  font-size: 1rem;
+  color: #546e7a; /* Gray color for card text */
+}
+
+.blog-section .btn-outline-primary {
+  border-color: #0d47a1; /* Dark blue border for button */
+  color: #0d47a1; /* Dark blue text for button */
+}
+
+.blog-section .btn-outline-primary:hover {
+  background-color: #0d47a1; /* Dark blue background on hover */
+  color: #ffffff; /* White text on hover */
+}
+
+.blog-section .text-muted {
+  font-size: 0.9rem;
+  color: #546e7a; /* Gray color for muted text */
+}
+/* About Us Section */
+.about-us-section {
+  padding: 60px 0;
+  background-color: #e3f2fd; /* Light blue background */
+}
+
+.about-us-section h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #1a237e; /* Dark blue color for the main heading */
+}
+
+.about-us-section h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #0d47a1; /* Slightly lighter blue for subheadings */
+}
+
+.about-us-section p.lead {
+  font-size: 1.25rem;
+  color: #1a237e; /* Dark blue color for lead text */
+}
+
+.mission-vision {
+  background-color: #bbdefb; /* Light blue background for mission/vision section */
+  border: 1px solid #90caf9; /* Light blue border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.mission-vision h4 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #0d47a1; /* Dark blue color for mission/vision headings */
+}
+
+.mission-vision p {
+  font-size: 1rem;
+  color: #1a237e; /* Dark blue text color */
+  margin-bottom: 1.5rem;
+}
+
+/* Team Section */
+.about-us-section .card {
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #ffffff; /* White background for cards */
+}
+
+.about-us-section .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about-us-section .card-img-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.about-us-section .card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #0d47a1; /* Dark blue color for card titles */
+}
+
+.about-us-section .card-text {
+  font-size: 1rem;
+  color: #1a237e; /* Dark blue color for card text */
+}
+
+.about-us-section .text-muted {
+  font-size: 0.9rem;
+  color: #546e7a; /* Gray color for muted text */
+}
+
+/* Partnerships Section */
+.about-us-section .d-flex img {
+  transition: transform 0.3s ease;
+}
+
+.about-us-section .d-flex img:hover {
+  transform: scale(1.1); 
+}
+
+/* Contact Us Section */
+.contact-us-section {
+  padding: 60px 0;
+  background-color: #f8f9fa; 
+}
+
+.contact-us-section h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #0d47a1; /* Dark blue color for the heading */
+}
+
+.contact-us-section .card {
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-us-section .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-us-section .card-title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #0d47a1; 
+}
+
+.contact-us-section .list-unstyled li {
+  font-size: 1rem;
+  color: #546e7a;
+  margin-bottom: 1rem;
+}
+
+.contact-us-section .list-unstyled li i {
+  width: 20px;
+  text-align: center;
+}
+
+.contact-us-section .btn-primary {
+  background-color: #0d47a1; 
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.contact-us-section .btn-primary:hover {
+  background-color: #1a237e; 
+}
+
+.contact-us-section iframe {
+  border-radius: 10px;
+}
+
+/* Form Card */
+.form-card {
+  background-color: #e3f2fd; /* Light blue background for the form card */
+  border: 1px solid #90caf9; /* Light blue border */
+}
+
+.form-card .card-body {
+  padding: 20px;
+}
+
+.form-card .card-title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #0d47a1; /* Dark blue color for the form title */
+}
+
+.form-card .form-label {
+  font-weight: bold;
+  color: #1a237e; /* Dark blue color for form labels */
+}
+
+.form-card .form-control {
+  border: 1px solid #90caf9; /* Light blue border for form inputs */
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.form-card .form-control:focus {
+  border-color: #0d47a1; /* Dark blue border on focus */
+  box-shadow: 0 0 5px rgba(13, 71, 161, 0.5); /* Blue shadow on focus */
+}
+
+.form-card .btn-primary {
+  background-color: #0d47a1; /* Dark blue button */
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.form-card .btn-primary:hover {
+  background-color: #1a237e; /* Darker blue on hover */
+}
+
+/* Login and Register Page Styles */
+.container.mt-5 {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #0d47a1; /* Dark blue color for the title */
+  text-align: center;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #1a237e; /* Dark blue color for labels */
+}
+
+.form-control {
+  border: 1px solid #90caf9; /* Light blue border for inputs */
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #0d47a1; /* Dark blue border on focus */
+  box-shadow: 0 0 5px rgba(13, 71, 161, 0.5); /* Blue shadow on focus */
+}
+
+.btn-primary {
+  background-color: #0d47a1; /* Dark blue button */
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1a237e; /* Darker blue on hover */
+}
+
+.text-center p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #546e7a; /* Gray color for text */
+}
+
+.text-center a {
+  color: #0d47a1; /* Dark blue color for links */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.text-center a:hover {
+  text-decoration: underline;
+}
+
+/* Custom styling for form.as_p */
+form p {
+  margin-bottom: 1rem;
+}
+
+form p label {
+  display: block;
+  font-weight: bold;
+  color: #1a237e; /* Dark blue color for labels */
+}
+
+form p input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #90caf9; /* Light blue border for inputs */
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form p input:focus {
+  border-color: #0d47a1; /* Dark blue border on focus */
+  box-shadow: 0 0 5px rgba(13, 71, 161, 0.5); /* Blue shadow on focus */
+}
+
+
+/* login and register page css styles */
+
+/* Custom styles for login and register pages */
+body {
+  background-color: #f8f9fa; /* Light gray background */
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #0d47a1; /* Dark blue color for the title */
+  text-align: center;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #1a237e; /* Dark blue color for labels */
+}
+
+.form-control {
+  border: 1px solid #90caf9; /* Light blue border for inputs */
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #0d47a1; /* Dark blue border on focus */
+  box-shadow: 0 0 5px rgba(13, 71, 161, 0.5); /* Blue shadow on focus */
+}
+
+.btn-primary {
+  background-color: #0d47a1; /* Dark blue button */
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1a237e; /* Darker blue on hover */
+}
+
+.text-center p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #546e7a; /* Gray color for text */
+}
+
+.text-center a {
+  color: #0d47a1; /* Dark blue color for links */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.text-center a:hover {
+  text-decoration: underline;
+}

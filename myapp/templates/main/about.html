@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+About Us
+{% endblock title %}
+
+{% block content %}
+<!-- About Us Section -->
+<section class="about-us-section py-5" style="background-color: #f8f9fa;">
+  <div class="container">
+    <h2 class="text-center mb-5">About Us</h2>
+
+    <!-- Company Overview -->
+    <div class="row mb-5">
+      <div class="col-lg-6">
+        <h3>Company Overview</h3>
+        <p class="lead">We are committed to empowering individuals with the skills they need to succeed in the tech industry.</p>
+        <p>Founded in 2010, our mission is to provide high-quality IT training and career support. Over the years, we have helped thousands of students achieve their career goals and have established ourselves as a trusted name in the industry.</p>
+        <div class="mission-vision p-4 rounded" style="background-color: #ffffff; border: 1px solid #e0e0e0;">
+          <h4>Our Mission</h4>
+          <p>Our mission is to make tech education accessible and effective for everyone. We believe that technology has the power to transform lives, and we are dedicated to providing high-quality training programs that equip individuals with the skills they need to thrive in the digital age. Whether you're a beginner or an experienced professional, we are here to support your learning journey.</p>
+          <h4>Our Vision</h4>
+          <p>Our vision is to be the leading provider of IT training globally. We aim to create a world where anyone, regardless of their background, can access the education and resources they need to build a successful career in technology. By fostering innovation, collaboration, and lifelong learning, we strive to empower individuals and organizations to achieve their full potential.</p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <img src="{% static 'images/aboutus.png' %}" class="img-fluid rounded" alt="About Us">
+      </div>
+    </div>
+
+    <!-- Team Introduction -->
+    <div class="row mb-5">
+      <div class="col-12">
+        <h3 class="text-center mb-4">Meet Our Team</h3>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          <!-- Team Member 1 -->
+          <div class="col">
+            <div class="card h-100 text-center shadow-sm">
+              <img src="{% static 'images/team1.jpg' %}" class="card-img-top" alt="John Doe">
+              <div class="card-body">
+                <h5 class="card-title">John Doe</h5>
+                <p class="card-text">Python Expert</p>
+                <p class="text-muted">10+ years of experience in software development and training.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 2 -->
+          <div class="col">
+            <div class="card h-100 text-center shadow-sm">
+              <img src="{% static 'images/team2.jpg' %}" class="card-img-top" alt="Jane Smith">
+              <div class="card-body">
+                <h5 class="card-title">Jane Smith</h5>
+                <p class="card-text">Web Development Specialist</p>
+                <p class="text-muted">8+ years of experience in front-end and back-end development.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 3 -->
+          <div class="col">
+            <div class="card h-100 text-center shadow-sm">
+              <img src="{% static 'images/team3.jpg' %}" class="card-img-top" alt="Alice Johnson">
+              <div class="card-body">
+                <h5 class="card-title">Alice Johnson</h5>
+                <p class="card-text">Data Science Instructor</p>
+                <p class="text-muted">7+ years of experience in data analysis and machine learning.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partnerships and Affiliations -->
+    <div class="row">
+      <div class="col-12">
+        <h3 class="text-center mb-4">Partnerships and Affiliations</h3>
+        <div class="d-flex flex-wrap justify-content-center gap-4">
+          <img src="{% static 'images/microsoft.png' %}" alt="Microsoft" class="img-fluid" style="max-width: 150px;">
+          <img src="{% static 'images/cisco.png' %}" alt="Cisco" class="img-fluid" style="max-width: 150px;">
+          <img src="{% static 'images/google.png' %}" alt="Google" class="img-fluid" style="max-width: 150px;">
+          <img src="{% static 'images/aws.png' %}" alt="AWS" class="img-fluid" style="max-width: 150px;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
