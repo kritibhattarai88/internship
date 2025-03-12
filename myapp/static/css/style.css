@@ -570,6 +570,55 @@ body {
   font-weight: bold;
 }
 
-.text-center a:hover {
+/* .text-center a:hover {
   text-decoration: underline;
+} */
+.profile-page {
+  background-color: #c5d9eb; /* Light blue background */
+  min-height: 100%; /* Ensures the background covers the full viewport */
+  padding: 5rem 0; 
+  
 }
+
+/* Custom dropdown styling */
+.dropdown-menu {
+  background-color: #343a40; /* Dark background color */
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-item {
+  color: #ffffff; /* White text color */
+  padding: 10px 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #495057; /* Slightly lighter background on hover */
+  color: #ffffff;
+}
+
+.dropdown-item i {
+  margin-right: 10px; /* Space between icon and text */
+}
+
+.dropdown-divider {
+  border-top: 1px solid #495057; /* Divider color */
+}
+
+
+/* Custom Alertify Success and Error Styles */
+.alertify .ajs-success {
+  background-color: #4CAF50; /* Green for success */
+  color: #fff;
+}
+
+.alertify .ajs-error {
+  background-color: #f44336; /* Red for error */
+  color: #fff;
+}
+
+
+
+

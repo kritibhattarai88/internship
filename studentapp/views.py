@@ -4,4 +4,4 @@ from django.shortcuts import render
 def dashboard(request):
     return render(request, 'dashboard/dashboard.html')
 def profile(request):
-    return render(request,'dashboard/profile.html')
+    return render(request,'dashboard/profile.html',{'user':request.user})

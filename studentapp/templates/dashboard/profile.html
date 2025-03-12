@@ -1,26 +1,65 @@
 {% extends 'base.html' %}
-{% block title %}My Profile{% endblock title %}
+{% block title %}
+Profile Detail Information
+{% endblock title %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container-fluid profile-page">
   <div class="row justify-content-center">
-    <div class="col-md-6">
+    <div class="col-md-8">
       <div class="card shadow-lg">
-        <div class="card-body p-5">
-          <h2 class="card-title text-center mb-4">My Profile</h2>
-          <div class="mb-3">
-            <strong>Username:</strong> {{ user.username }}
+        <div class="card-body p-4">
+          <!-- Profile Header -->
+          <div class="text-center mb-4">
+            
+            <h2 class="card-title mb-2">Profile Detail Information</h2>
+            <p class="text-muted">Here you can find your profile details. Ensure your information is up to date.</p>
           </div>
-          <div class="mb-3">
-            <strong>Email:</strong> {{ user.email }}
+          <hr>
+
+          <!-- Profile Information -->
+          <div class="profile-info">
+            <div class="mb-3">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-person-fill me-2 fs-5"></i>
+                <div>
+                  <strong>Username:</strong>
+                  <p class="mb-0">{{ user.username }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-envelope-fill me-2 fs-5"></i>
+                <div>
+                  <strong>Email:</strong>
+                  <p class="mb-0">{{ user.email }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-person me-2 fs-5"></i>
+                <div>
+                  <strong>First Name:</strong>
+                  <p class="mb-0">{{ user.first_name }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-person me-2 fs-5"></i>
+                <div>
+                  <strong>Last Name:</strong>
+                  <p class="mb-0">{{ user.last_name }}</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="mb-3">
-            <strong>First Name:</strong> {{ user.first_name }}
-          </div>
-          <div class="mb-3">
-            <strong>Last Name:</strong> {{ user.last_name }}
-          </div>
-          <a href="#" class="btn btn-danger w-100">Logout</a>
+          
         </div>
       </div>
     </div>
