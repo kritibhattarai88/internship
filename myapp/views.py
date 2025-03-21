@@ -7,6 +7,7 @@ from django.contrib import messages
 from datetime import datetime
 from django.core.mail import send_mail,EmailMessage
 from django.contrib.auth.models import User
+from .models import *
 
 
 # Create your views here.
@@ -106,22 +107,24 @@ def register_view(request):
             return redirect('register')
 
         # Check if username already exists
-        if User.objects.filter(username=username).exists():
+        if CustomUser.objects.filter(username=username).exists():
             messages.error(request, 'Username already taken.')  # Error message
             return redirect('register')
 
         # Check if email already exists
-        if User.objects.filter(email=email).exists():
+        if CustomUser.objects.filter(email=email).exists():
             messages.error(request, 'Email already registered.')  # Error message
             return redirect('register')
 
         # Create the user
-        user = User.objects.create_user(
+        user = CustomUser.objects.create_user(
             username=username,
             email=email,
             password=password1,
             first_name=first_name,
-            last_name=last_name
+            last_name=last_name,
+            user_type='student'
+            
         )
         user.save()
 

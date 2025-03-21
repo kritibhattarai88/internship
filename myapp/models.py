@@ -1,6 +1,22 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 from django.utils.text import slugify
 # Create your models here.
+
+class CustomUser(AbstractUser):
+    USER_TYPE = (
+        ("student", "Student"),
+        ("instructor", "Instructor"),
+    )
+    user_type = models.CharField(max_length=100, choices=USER_TYPE)
+    user_profile_image = models.ImageField(upload_to="images/profile_images/")
+    phone = models.CharField(max_length=15, blank=True, null=True)
+    address = models.TextField(blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.username
+    
 class Testimonial(models.Model):
     student_name = models.CharField(max_length=100)
     postion = models.CharField(max_length=100)
@@ -60,3 +76,4 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+    

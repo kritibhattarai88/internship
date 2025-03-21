@@ -6,41 +6,48 @@
 <!-- Courses Section -->
 <section class="courses-section py-5">
   <div class="container">
-    <h2 class="text-center mb-5">Our Courses</h2>
+    <h2 class="text-center fw-bold text-primary mb-5">Our Courses</h2>
 
     <!-- Filters and Sorting -->
     <div class="row mb-4">
-      <div class="col-md-6">
-        <h5>Filters</h5>
-        <div class="d-flex flex-wrap gap-2">
-          <select class="form-select" aria-label="Skill Level">
-            <option selected>Skill Level</option>
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
-          </select>
-          <select class="form-select" aria-label="Duration">
-            <option selected>Duration</option>
-            <option value="short-term">Short-term</option>
-            <option value="long-term">Long-term</option>
-          </select>
-          <select class="form-select" aria-label="Price Range">
-            <option selected>Price Range</option>
-            <option value="low-to-high">Low to High</option>
-            <option value="high-to-low">High to Low</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <h5>Sort By</h5>
-        <div class="d-flex flex-wrap gap-2">
-          <select class="form-select" aria-label="Sort By">
-            <option selected>Sort By</option>
-            <option value="popularity">Popularity</option>
-            <option value="newest">Newest First</option>
-            <option value="price-low-to-high">Price: Low to High</option>
-            <option value="price-high-to-low">Price: High to Low</option>
-          </select>
+      <div class="col-md-12">
+        <div class="d-flex flex-wrap gap-3 align-items-center">
+          <!-- Filters -->
+          <div class="flex-grow-1">
+            <h5 class="mb-2">Filters</h5>
+            <div class="d-flex flex-wrap gap-2">
+              <select class="form-select form-select-sm btn-outline-secondary" style="width: 150px;">
+                <option selected>Skill Level</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+              <select class="form-select form-select-sm btn-outline-secondary" style="width: 150px;">
+                <option selected>Duration</option>
+                <option value="short-term">Short-term</option>
+                <option value="long-term">Long-term</option>
+              </select>
+              <select class="form-select form-select-sm btn-outline-secondary" style="width: 150px;">
+                <option selected>Price Range</option>
+                <option value="low-to-high">Low to High</option>
+                <option value="high-to-low">High to Low</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Sort By -->
+          <div class="flex-grow-1">
+            <h5 class="mb-2">Sort By</h5>
+            <div class="d-flex flex-wrap gap-2">
+              <select class="form-select form-select-sm btn-outline-secondary" style="width: 150px;">
+                <option selected>Sort By</option>
+                <option value="popularity">Popularity</option>
+                <option value="newest">Newest First</option>
+                <option value="price-low-to-high">Price: Low to High</option>
+                <option value="price-high-to-low">Price: High to Low</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
     </div>
