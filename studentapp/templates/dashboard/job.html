@@ -1,85 +1,255 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-Job Announcements
+Job Opportunities in Nepal
 {% endblock title %}
 
 {% block content %}
 
 <!-- Job Listings Section -->
-<section class="job-listings py-5">
+<section class="job-opportunities py-5 bg-light">
   <div class="container">
-    <h2 class="text-center mb-5">Job Listings</h2>
-    <div class="row">
-      <!-- Job Listing Cards -->
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 shadow-sm">
+    <div class="text-center mb-5">
+      <h2 class="display-5 fw-bold text-primary">Job Annoucements</h2>
+    </div>
+    
+    <div class="row g-4">
+      <!-- Job Listing 1 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm hover-shadow">
+          <div class="card-header bg-white">
+            <h4 class="mb-0">Web Developer</h4>
+          </div>
           <div class="card-body">
-            <h5 class="card-title">Web Developer</h5>
-            <p class="card-text"><strong>Company:</strong> Tech Innovators Inc.</p>
-            <p class="card-text"><strong>Location:</strong> Remote</p>
-            <p class="card-text"><strong>Deadline:</strong> January 31, 2024</p>
-            <a href="#" class="btn btn-primary">Apply Now</a>
+            <div class="d-flex align-items-center mb-3">
+              <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                <i class="bi bi-building text-primary fs-4"></i>
+              </div>
+              <div>
+                <h5 class="mb-0">Fusemachines Nepal</h5>
+                <small class="text-muted">IT & Software</small>
+              </div>
+            </div>
+            
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2">
+                <i class="bi bi-geo-alt me-2 text-primary"></i>
+                <strong>Location:</strong> Kathmandu
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-calendar me-2 text-primary"></i>
+                <strong>Deadline:</strong> Chaitra 15, 2080
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-envelope me-2 text-primary"></i>
+                <strong>Contact:</strong> careers@fusemachines.com.np
+              </li>
+            </ul>
+            
+            <a href="mailto:careers@fusemachines.com.np?subject=Application for Web Developer Position" 
+               class="btn btn-outline-primary w-100">
+              <i class="bi bi-envelope-plus me-2"></i>Send Application
+            </a>
           </div>
         </div>
       </div>
 
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 shadow-sm">
+      <!-- Job Listing 2 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm hover-shadow">
+          <div class="card-header bg-white">
+            <h4 class="mb-0">Python Developer</h4>
+          </div>
           <div class="card-body">
-            <h5 class="card-title">Python Developer</h5>
-            <p class="card-text"><strong>Company:</strong> Code Masters LLC</p>
-            <p class="card-text"><strong>Location:</strong> Austin, TX</p>
-            <p class="card-text"><strong>Deadline:</strong> February 10, 2024</p>
-            <a href="#" class="btn btn-primary">Apply Now</a>
+            <div class="d-flex align-items-center mb-3">
+              <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                <i class="bi bi-building text-primary fs-4"></i>
+              </div>
+              <div>
+                <h5 class="mb-0">Leapfrog Technology</h5>
+                <small class="text-muted">Software Development</small>
+              </div>
+            </div>
+            
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2">
+                <i class="bi bi-geo-alt me-2 text-primary"></i>
+                <strong>Location:</strong> Lalitpur
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-calendar me-2 text-primary"></i>
+                <strong>Deadline:</strong> Chaitra 25, 2080
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-envelope me-2 text-primary"></i>
+                <strong>Contact:</strong> hr@leapfrogtechnology.com
+              </li>
+            </ul>
+            
+            <a href="mailto:hr@leapfrogtechnology.com?subject=Application for Python Developer Position" 
+               class="btn btn-outline-primary w-100">
+              <i class="bi bi-envelope-plus me-2"></i>Send Application
+            </a>
           </div>
         </div>
       </div>
 
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 shadow-sm">
+      <!-- Job Listing 3 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm hover-shadow">
+          <div class="card-header bg-white">
+            <h4 class="mb-0">Graphics Designer</h4>
+          </div>
           <div class="card-body">
-            <h5 class="card-title">Graphics Designer</h5>
-            <p class="card-text"><strong>Company:</strong> Creative Minds Ltd.</p>
-            <p class="card-text"><strong>Location:</strong> Chicago, IL</p>
-            <p class="card-text"><strong>Deadline:</strong> February 15, 2024</p>
-            <a href="#" class="btn btn-primary">Apply Now</a>
+            <div class="d-flex align-items-center mb-3">
+              <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                <i class="bi bi-building text-primary fs-4"></i>
+              </div>
+              <div>
+                <h5 class="mb-0">Young Innovations</h5>
+                <small class="text-muted">Creative Design</small>
+              </div>
+            </div>
+            
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2">
+                <i class="bi bi-geo-alt me-2 text-primary"></i>
+                <strong>Location:</strong> Kathmandu
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-calendar me-2 text-primary"></i>
+                <strong>Deadline:</strong> Baisakh 5, 2081
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-envelope me-2 text-primary"></i>
+                <strong>Contact:</strong> jobs@younginnovations.com.np
+              </li>
+            </ul>
+            
+            <a href="mailto:jobs@younginnovations.com.np?subject=Application for Graphics Designer Position" 
+               class="btn btn-outline-primary w-100">
+              <i class="bi bi-envelope-plus me-2"></i>Send Application
+            </a>
           </div>
         </div>
       </div>
 
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 shadow-sm">
+      <!-- Job Listing 4 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm hover-shadow">
+          <div class="card-header bg-white">
+            <h4 class="mb-0">Data Analyst</h4>
+          </div>
           <div class="card-body">
-            <h5 class="card-title">Data Analyst</h5>
-            <p class="card-text"><strong>Company:</strong> Data Wizards Corp.</p>
-            <p class="card-text"><strong>Location:</strong> New York, NY</p>
-            <p class="card-text"><strong>Deadline:</strong> February 20, 2024</p>
-            <a href="#" class="btn btn-primary">Apply Now</a>
+            <div class="d-flex align-items-center mb-3">
+              <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                <i class="bi bi-building text-primary fs-4"></i>
+              </div>
+              <div>
+                <h5 class="mb-0">CloudFactory Nepal</h5>
+                <small class="text-muted">Data Science</small>
+              </div>
+            </div>
+            
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2">
+                <i class="bi bi-geo-alt me-2 text-primary"></i>
+                <strong>Location:</strong> Kathmandu
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-calendar me-2 text-primary"></i>
+                <strong>Deadline:</strong> Baisakh 15, 2081
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-envelope me-2 text-primary"></i>
+                <strong>Contact:</strong> recruitment@cloudfactory.com
+              </li>
+            </ul>
+            
+            <a href="mailto:recruitment@cloudfactory.com?subject=Application for Data Analyst Position" 
+               class="btn btn-outline-primary w-100">
+              <i class="bi bi-envelope-plus me-2"></i>Send Application
+            </a>
           </div>
         </div>
       </div>
 
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 shadow-sm">
+      <!-- Job Listing 5 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm hover-shadow">
+          <div class="card-header bg-white">
+            <h4 class="mb-0">IT Support Specialist</h4>
+          </div>
           <div class="card-body">
-            <h5 class="card-title">IT Support Specialist</h5>
-            <p class="card-text"><strong>Company:</strong> Global Solutions Ltd.</p>
-            <p class="card-text"><strong>Location:</strong> San Francisco, CA</p>
-            <p class="card-text"><strong>Deadline:</strong> February 28, 2024</p>
-            <a href="#" class="btn btn-primary">Apply Now</a>
+            <div class="d-flex align-items-center mb-3">
+              <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                <i class="bi bi-building text-primary fs-4"></i>
+              </div>
+              <div>
+                <h5 class="mb-0">Verisk Nepal</h5>
+                <small class="text-muted">IT Services</small>
+              </div>
+            </div>
+            
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2">
+                <i class="bi bi-geo-alt me-2 text-primary"></i>
+                <strong>Location:</strong> Kathmandu
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-calendar me-2 text-primary"></i>
+                <strong>Deadline:</strong> Chaitra 30, 2080
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-envelope me-2 text-primary"></i>
+                <strong>Contact:</strong> careers@verisknepal.com
+              </li>
+            </ul>
+            
+            <a href="mailto:careers@verisknepal.com?subject=Application for IT Support Specialist Position" 
+               class="btn btn-outline-primary w-100">
+              <i class="bi bi-envelope-plus me-2"></i>Send Application
+            </a>
           </div>
         </div>
       </div>
 
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 shadow-sm">
+      <!-- Job Listing 6 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm hover-shadow">
+          <div class="card-header bg-white">
+            <h4 class="mb-0">Mobile App Developer</h4>
+          </div>
           <div class="card-body">
-            <h5 class="card-title">Mobile App Developer</h5>
-            <p class="card-text"><strong>Company:</strong> App Creators Inc.</p>
-            <p class="card-text"><strong>Location:</strong> Seattle, WA</p>
-            <p class="card-text"><strong>Deadline:</strong> March 5, 2024</p>
-            <a href="#" class="btn btn-primary">Apply Now</a>
+            <div class="d-flex align-items-center mb-3">
+              <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                <i class="bi bi-building text-primary fs-4"></i>
+              </div>
+              <div>
+                <h5 class="mb-0">Cotiviti Nepal</h5>
+                <small class="text-muted">Mobile Development</small>
+              </div>
+            </div>
+            
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2">
+                <i class="bi bi-geo-alt me-2 text-primary"></i>
+                <strong>Location:</strong> Kathmandu
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-calendar me-2 text-primary"></i>
+                <strong>Deadline:</strong> Baisakh 10, 2081
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-envelope me-2 text-primary"></i>
+                <strong>Contact:</strong> hr@cotiviti.com.np
+              </li>
+            </ul>
+            
+            <a href="mailto:hr@cotiviti.com.np?subject=Application for Mobile App Developer Position" 
+               class="btn btn-outline-primary w-100">
+              <i class="bi bi-envelope-plus me-2"></i>Send Application
+            </a>
           </div>
         </div>
       </div>

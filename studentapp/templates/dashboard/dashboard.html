@@ -1,66 +1,102 @@
 {% extends 'base.html' %}
+
 {% block title %}
 Dashboard
 {% endblock title %}
 
 {% block content %}
-<div class="container mt-5">
+{% load static %}
+<div class="container-fluid mt-4">
   <div class="row">
-    <!-- Introduction Section -->
-    <div class="col-md-8">
-      <div class="card shadow-lg mb-4">
-        <div class="card-body">
-          <h2 class="card-title">Welcome to Your Dashboard</h2>
-          <p class="card-text">
-            Hello, <strong>{{ user.username }}</strong>! Welcome to your personalized dashboard. Here, you can manage your profile, track your progress, and explore new opportunities. Stay updated with the latest news and resources to enhance your learning experience.
-          </p>
-          <a href="{% url 'profile' %}" class="btn btn-primary">
-            <i class="bi bi-person-fill me-2"></i>View Profile
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Quick Links Section -->
-    <div class="col-md-4">
-      <div class="card shadow-lg mb-4">
-        <div class="card-body">
-          <h5 class="card-title">Quick Links</h5>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <a href="{% url 'course' %}" class="text-decoration-none">
-                <i class="bi bi-book me-2"></i>Courses
+    <!-- Left Side Navigation -->
+    <div class="col-md-3 col-lg-2 px-0">
+      <div class="card shadow-sm h-100">
+        <div class="card-body p-0">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active px-4 py-3" href="{% url 'profile' %}">
+                <i class="bi bi-person-fill me-3"></i>My Profile
               </a>
             </li>
-            <li class="list-group-item">
-              <a href="{% url 'blog_list' %}" class="text-decoration-none">
-                <i class="bi bi-newspaper me-2"></i>Blog
+            <li class="nav-item">
+              <a class="nav-link px-4 py-3" href="#">
+                <i class="bi bi-journal-bookmark-fill me-3"></i>Enrolled Courses
               </a>
             </li>
-            <li class="list-group-item">
-              <a href="{% url 'contact' %}" class="text-decoration-none">
-                <i class="bi bi-envelope me-2"></i>Contact Us
+            <li class="nav-item">
+              <a class="nav-link px-4 py-3" href="{% url 'job_placement' %}">
+                <i class="bi bi-briefcase-fill me-3"></i>Job Placement
+              </a>
+            </li>
+            <li class="nav-item mt-auto">
+              <a class="nav-link text-danger px-4 py-3" href="{% url 'logout' %}">
+                <i class="bi bi-box-arrow-right me-3"></i>Logout
               </a>
             </li>
           </ul>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Image Section -->
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card shadow-lg">
-        <div class="card-body">
-          <h5 class="card-title">Featured Image</h5>
-          <img src="https://via.placeholder.com/1200x400" alt="Featured Image" class="img-fluid rounded">
-          <p class="card-text mt-3">
-            Explore our latest resources and stay ahead in your learning journey. This section highlights important updates and featured content.
-          </p>
+    <!-- Main Content Area -->
+    <div class="col-md-9 col-lg-10">
+      <div class="container mt-5">
+        <!-- Top Right Button -->
+        <div class="d-flex justify-content-end mb-4">
+          {% if not user.is_instructor %}
+          <a href="#" class="btn btn-success">
+            <i class="bi bi-mortarboard me-2"></i>Become an Instructor
+          </a>
+          {% endif %}
+        </div>
+
+        <div class="row">
+          <!-- Introduction Section -->
+          <div class="col-md-8">
+            <div class="card shadow-lg mb-4">
+              <div class="card-body">
+                <h2 class="card-title">Welcome to Your Dashboard</h2>
+                <p class="card-text">
+                  Hello, <strong>{{ user.username }}</strong>! Welcome to your personalized dashboard. Here, you can manage your profile, track your progress, and explore new opportunities. Stay updated with the latest news and resources to enhance your learning experience.
+                </p>
+                <div class="d-flex align-items-center">
+                  <a href="{% url 'profile' %}" class="btn btn-primary">
+                    <i class="bi bi-person-fill me-2"></i>View Profile
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Links Section -->
+          <div class="col-md-4">
+            <div class="card shadow-lg mb-4">
+              <div class="card-body">
+                <h5 class="card-title">Quick Links</h5>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <a href="{% url 'course' %}" class="text-decoration-none">
+                      <i class="bi bi-book me-2"></i>Courses
+                    </a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="{% url 'blog_list' %}" class="text-decoration-none">
+                      <i class="bi bi-newspaper me-2"></i>Blog
+                    </a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="{% url 'contact' %}" class="text-decoration-none">
+                      <i class="bi bi-envelope me-2"></i>Contact Us
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 {% endblock content %}
