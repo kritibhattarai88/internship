@@ -9,7 +9,7 @@
     <div class="text-center mb-5">
       <h2 class="display-5 fw-bold text-primary">Job Announcements</h2>
     </div>
-    
+
     <div class="row g-4">
       {% for job in jobs %}
       <div class="col-md-6 col-lg-4">
@@ -27,7 +27,7 @@
                 <small class="text-muted">{{ job.category }}</small>
               </div>
             </div>
-            
+
             <ul class="list-unstyled mb-4">
               <li class="mb-2">
                 <i class="bi bi-geo-alt me-2 text-primary"></i>
@@ -40,11 +40,13 @@
               <li class="mb-2">
                 <i class="bi bi-envelope me-2 text-primary"></i>
                 <strong>Contact:</strong>
-                <a href="mailto:{{ job.email }}?subject=Application%20for%20{{ job.title|urlencode }}" 
-                   class="text-primary text-decoration-none">
-                   {{ job.email }}
+                <a href="mailto:{{ job.email }}?subject={{ 'Application for ' |add:job.title|urlencode }}"
+                  class="text-primary text-decoration-none">
+                  {{ job.email }}
                 </a>
-            </li>
+
+
+              </li>
               <li class="mb-2">
                 <i class="bi bi-file-earmark-text me-2 text-primary"></i>
                 <strong>Description:</strong> {{ job.description|truncatewords:20 }}

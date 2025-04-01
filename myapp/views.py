@@ -18,8 +18,9 @@ def base(request):
 
 def home(request):
     testimonials = Testimonial.objects.all()
+    courses= Course.objects.all()
     context = {
-       
+        "courses":courses,
         "testimonials": testimonials,
     }
     return render(request, 'main/home.html',context)

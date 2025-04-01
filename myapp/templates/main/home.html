@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Home{% endblock title %}
+{% block title %}
+Home
+{% endblock title %}
 
 {% block content %}
   <!-- Main Banner Section -->
@@ -137,6 +139,45 @@
     </button>
   </div>
 </div>
+
+<!-- Courses Section --> 
+<section class="courses-section py-5">  <!-- Added proper section tag -->
+  <div class="container">
+    <h2 class="text-center mb-4">Featured Courses</h2>  <!-- Added heading -->
+    
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      {% for course in courses %}
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <!-- Course Image -->
+          {% if course.image %}
+          <img src="{{ course.image.url }}" class="card-img-top" alt="{{ course.name }}">
+          {% else %}
+          <img src="{% static 'images/default-course.jpg' %}" class="card-img-top" alt="Default Course Image">
+          {% endif %}
+
+          <div class="card-body">
+            <h5 class="card-title">{{ course.name }}</h5>
+            <p class="card-text">{{ course.short_description|default:course.description|truncatewords:20 }}</p>
+            <div class="mb-3">
+              <span class="badge bg-primary">{{ course.get_skill_level_display }}</span>
+              <span class="float-end">Rs. {{ course.fee }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <div class="text-center mt-4">
+      <a href="{% url 'course' %}" class="btn btn-outline-primary btn-light">
+        View All Courses <i class="fas fa-arrow-right ms-2"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+
 <!-- More Inquiries Section -->
 <section class="inquiries-section py-5 bg-light">
   <div class="container">
