@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp',
     'studentapp',
-    'instructorapp'
+    'instructorapp',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +53,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+#session settings
+SESSION_COOKIE_AGE = 3600  # 1 hour in seconds
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_COOKIE_SECURE = True  # If using HTTPS
+SESSION_COOKIE_HTTPONLY = True
 
 ROOT_URLCONF = 'myproject.urls'
 

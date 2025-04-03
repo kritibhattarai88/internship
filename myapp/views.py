@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from .models import *
 
 
+
 # Create your views here.
 date = datetime.now().year
 
@@ -77,7 +78,6 @@ def blog_detail(request, slug):
 
 # +++++======Authentication section======+++++++++++
 
-from django.contrib import messages
 
 def login_view(request):
     if request.method == 'POST':
@@ -87,7 +87,10 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'Login successfully!')  # Success message
-            return redirect('home')
+            if user.user_type=="student":
+              return redirect('home')
+            elif user.user_type=="instructor":
+                return redirect('instructordashboard')
         else:
             messages.error(request, 'Invalid username or password.')  # Error message
     return render(request, 'userauthentication/login.html')
@@ -139,3 +142,5 @@ def logout_view(request):
     logout(request)  # Logs out the user
     messages.success(request, 'You have been successfully logged out.')  # Success message
     return redirect('home')  # Redirect to the homepage
+
+

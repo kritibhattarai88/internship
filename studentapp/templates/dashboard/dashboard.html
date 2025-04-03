@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 
 {% block title %}
-Dashboard
+Student Dashboard
 {% endblock title %}
 
 {% block content %}
@@ -41,25 +41,32 @@ Dashboard
     <!-- Main Content Area -->
     <div class="col-md-9 col-lg-10">
       <div class="container mt-5">
-        <!-- Top Right Button -->
+        <!-- Instructor Application Status -->
         <div class="d-flex justify-content-end mb-4">
-          {% if not user.is_instructor %}
-          <a href="#" class="btn btn-success">
-            <i class="bi bi-mortarboard me-2"></i>Become an Instructor
-          </a>
+          {% if user.instructor_applied %}
+            <div class="alert alert-info mb-0">
+              <i class="bi bi-hourglass me-2"></i>Your instructor application is under review. We'll contact you soon.
+            </div>
+          {% else %}
+            <form method="post" action="{% url 'become_instructor' %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-success">
+                <i class="bi bi-mortarboard me-2"></i>Become an Instructor
+              </button>
+            </form>
           {% endif %}
         </div>
 
         <div class="row">
-          <!-- Introduction Section -->
+          <!-- Dashboard Content -->
           <div class="col-md-8">
             <div class="card shadow-lg mb-4">
               <div class="card-body">
-                <h2 class="card-title">Welcome to Your Dashboard</h2>
+                <h2 class="card-title">Student Dashboard</h2>
                 <p class="card-text">
-                  Hello, <strong>{{ user.username }}</strong>! Welcome to your personalized dashboard. Here, you can manage your profile, track your progress, and explore new opportunities. Stay updated with the latest news and resources to enhance your learning experience.
+                  Hello, <strong>{{ user.username }}</strong>! Welcome to your personalized dashboard.
                 </p>
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center gap-2 mt-3">
                   <a href="{% url 'profile' %}" class="btn btn-primary">
                     <i class="bi bi-person-fill me-2"></i>View Profile
                   </a>
@@ -76,7 +83,7 @@ Dashboard
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">
                     <a href="{% url 'course' %}" class="text-decoration-none">
-                      <i class="bi bi-book me-2"></i>Courses
+                      <i class="bi bi-book me-2"></i>Browse Courses
                     </a>
                   </li>
                   <li class="list-group-item">
@@ -98,5 +105,4 @@ Dashboard
     </div>
   </div>
 </div>
-
 {% endblock content %}
