@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.text import slugify
+from django.conf import settings
 # Create your models here.
 
 class CustomUser(AbstractUser):
@@ -45,7 +46,13 @@ class Course(models.Model):
         ('short-term', 'Short-term'),
         ('long-term', 'Long-term'),
     ]
-
+    instructor = models.ForeignKey(
+    settings.AUTH_USER_MODEL,
+    on_delete=models.CASCADE,
+    null=True,  
+    blank=True, 
+    related_name='courses'
+)
     name = models.CharField(max_length=200)
     description = models.TextField()
     duration = models.CharField(max_length=20, choices=DURATION_CHOICES)
@@ -53,7 +60,7 @@ class Course(models.Model):
     skill_level = models.CharField(max_length=20, choices=SKILL_LEVEL_CHOICES)
     prerequisites = models.TextField(blank=True)
     image = models.ImageField(upload_to='courses/', blank=True, null=True)
-    # instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE, related_name='courses')
+    
 
     def __str__(self):
         return self.name 

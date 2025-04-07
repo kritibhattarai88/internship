@@ -56,13 +56,11 @@
                         Hello, {{ user.username }}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                        <li><a class="dropdown-item" href="{% url 'dashboard' %}"><i
-                                    class="bi bi-speedometer2"></i>Dashboard</a></li>
-                        <li><a class="dropdown-item" href="#"><i
-                                    class="bi bi-book"></i>Enrolled Courses</a></li>
-                        <li><a class="dropdown-item" href="{% url 'job_announcement' %}"><i
-                                    class="bi bi-briefcase"></i>Job Announcement</a></li>
-                        <li>
+                        {% if user.user_type == "student" %}
+                        <li><a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a></li>
+                        {% elif user.user_type == "instructor" %}
+                        <li><a class="dropdown-item" href="{% url 'instructordashboard' %}">Instructor Dashboard</a></li>
+                        {% endif %}
                             <hr class="dropdown-divider">
                         </li>
                         <li><a class="dropdown-item" href="{% url 'profile' %}"><i class="bi bi-person"></i>My
@@ -96,7 +94,12 @@
                     <ul class="list-unstyled">
                         <li>
                             {% if user.is_authenticated %}
-                            <a href="{% url 'dashboard' %}" class="text-white">Dashboard</a>
+                            {% if user.user_type == "student" %}
+                            <li><a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a></li>
+                            {% elif user.user_type == "instructor" %}
+                            
+                            <li><a class="dropdown-item" href="{% url 'instructordashboard' %}">Instructor Dashboard</a></li>
+                            {% endif %}
                             {% else %}
                             <a href="{% url 'login' %}" class="text-white">Dashboard</a>
                             {% endif %}

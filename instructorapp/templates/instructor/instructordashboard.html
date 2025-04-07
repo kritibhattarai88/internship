@@ -19,12 +19,12 @@ Instructor Dashboard - {{ request.user.username }}
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link px-4 py-3" href="#">
+                            <a class="nav-link px-4 py-3" href="{% url 'mycourse' %}">
                                 <i class="bi bi-journal-bookmark-fill me-3"></i>My Courses
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link px-4 py-3" href="#">
+                            <a class="nav-link px-4 py-3" href="{% url 'create_course' %}">
                                 <i class="bi bi-plus-circle-fill me-3"></i>Create Course
                             </a>
                         </li>
@@ -63,7 +63,7 @@ Instructor Dashboard - {{ request.user.username }}
                                                     <i class="bi bi-journal-bookmark me-2"></i>Your Courses
                                                 </h5>
                                                 <p class="card-text">Manage your teaching materials</p>
-                                                <a href="#" class="btn btn-outline-primary">
+                                                <a href="{% url 'mycourse' %}" class="btn btn-outline-primary">
                                                     View Courses
                                                 </a>
                                             </div>
