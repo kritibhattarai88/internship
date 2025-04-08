@@ -54,12 +54,14 @@ class Course(models.Model):
     related_name='courses'
 )
     name = models.CharField(max_length=200)
+    old_fee = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
     description = models.TextField()
     duration = models.CharField(max_length=20, choices=DURATION_CHOICES)
     fee = models.DecimalField(max_digits=10, decimal_places=2)
     skill_level = models.CharField(max_length=20, choices=SKILL_LEVEL_CHOICES)
     prerequisites = models.TextField(blank=True)
     image = models.ImageField(upload_to='courses/', blank=True, null=True)
+    
     
 
     def __str__(self):
@@ -88,3 +90,22 @@ class Blog(models.Model):
     def __str__(self):
         return self.title
     
+class Payment(models.Model):
+    PAYMENT_METHODS = [
+        ("esewa", "eSewa"),
+        ("khalti", "Khalti")
+    ]
+    STATUS_CHOICES = [
+        ("pending", "Pending"),
+        ("completed", "Completed"),
+        ("failed", "Failed"),
+    ]
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_method = models.CharField(max_length=20, choices=PAYMENT_METHODS)
+    transaction_id = models.CharField(max_length=100, unique=True,null=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="pending")
+
+    def str(self):
+        return f"{self.user.username} - {self.course.title} - {self.payment_method} - {self.status}"

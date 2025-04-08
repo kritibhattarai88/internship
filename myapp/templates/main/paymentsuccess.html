@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Payment Successful{% endblock title %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-check-circle me-2"></i>Payment Successful
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-success">
+                        <h4>Thank you for your payment!</h4>
+                        <p>Your payment for the course <strong>{{ payment.course.title }}</strong> has been successfully processed.</p>
+                        <p><strong>Transaction ID:</strong> {{ payment.transaction_id }}</p>
+                        <p><strong>Amount Paid:</strong> Rs. {{ payment.amount }}</p>
+                        <p>The instructor will get in touch with you shortly.</p>
+
+                        <a href="{% url 'course' %}" class="btn btn-primary mt-3">Go to Courses</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

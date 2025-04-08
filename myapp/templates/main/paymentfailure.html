@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Payment Failed{% endblock title %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-times-circle me-2"></i>Payment Failed
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-danger">
+                        <h4>Oops! Something went wrong with your payment.</h4>
+                        <p><strong>Error:</strong> {{ error }}</p>
+                        <p>Please try again or contact support if the issue persists.</p>
+                       
+                        <a href="{% url 'course' %}" class="btn btn-primary mt-3">Back to Courses</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

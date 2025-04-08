@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Payment - {{ course.name }}{% endblock title %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-lock me-2"></i>Secure Payment
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <!-- Course Summary -->
+                    <div class="mb-4 border-bottom pb-3">
+                        <h4 class="text-primary">{{ course.title }}</h4>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <p class="mb-1"><strong>Instructor:</strong> {{ course.instructor }}</p>
+                                <p class="mb-1"><strong>Duration:</strong> {{course.duration }}</p>
+                            </div>
+                            <div class="text-end">
+                                {% if course.old_fee and course.old_fee > course.fee %}
+                                <p class="mb-1"><del class="text-muted">Rs. {{ course.old_fee }}</del></p>
+                                <h4 class="text-success mb-0">Rs. {{ course.fee }}</h4>
+                                {% else %}
+                                <h4 class="mb-0">Rs. {{ course.fee }}</h4>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Options -->
+                    <div class="mb-4">
+                        <h5 class="mb-3">Select Payment Method</h5>
+                        
+                        <!-- Khalti Payment -->
+                        <div class="card mb-3 payment-option" id="khalti-option">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <img src="{% static 'images/khalti.png' %}" alt="Khalti" class="me-3" style="height: 30px;">
+                                    <div>
+                                        <h6 class="mb-0">Pay with Khalti</h6>
+                                        <small class="text-muted">Instant payment with Khalti wallet</small>
+                                    </div>
+                                </div>
+                                <form action="{% url 'initiate' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="course_id" value="{{ course.id }}">
+                                    <input type="hidden" name="purchase_order_id" value="{{ transaction_id }}">
+                                    <input type="hidden" name="amount" value="{{ course.fee }}">
+                                    <input type="hidden" name="return_url" value="{% url 'khalti_success' %}">
+                                    <button type="submit" class="btn btn-outline-primary w-100 mt-3" id="pay-with-khalti">
+                                    <i class="fas fa-mobile-alt me-2"></i>Pay Now with Khalti
+                                    </button>
+                                </form>
+                               
+                            </div>
+                        </div>
+                        
+                        <!-- eSewa Payment -->
+                        <div class="card payment-option" id="esewa-option">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <img src="{% static 'images/esewa.png' %}" alt="eSewa" class="me-3" style="height: 30px;">
+                                    <div>
+                                        <h6 class="mb-0">Pay with eSewa</h6>
+                                        <small class="text-muted">Secure payment with eSewa wallet</small>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-outline-success w-100 mt-3" id="pay-with-esewa">
+                                    <i class="fas fa-wallet me-2"></i>Pay Now with eSewa
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Payment Terms -->
+                    <div class="alert alert-info">
+                        <h6><i class="fas fa-info-circle me-2"></i>Payment Terms</h6>
+                        <ul class="mb-0">
+                            <li>All payments are secure and encrypted</li>
+                            <li>You will receive a payment confirmation via email</li>
+                            <li>Refund policy: 7-day money back guarantee</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

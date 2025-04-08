@@ -69,7 +69,15 @@
             <p class="card-text">{{ course.description }}</p>
             <ul class="list-unstyled">
               <li><strong>Duration:</strong> {{ course.get_duration_display }}</li>
-              <li><strong>Fee:</strong> Rs.{{ course.fee }}</li>
+              <li><strong>Fee:</strong>
+                {% if course.old_fee and course.old_fee > course.fee %}
+                <del>Rs.{{ course.old_fee }}</del>
+                <span class="text-success fw-semibold ms-2">Rs.{{ course.fee }}</span>
+                {% else %}
+                Rs.{{ course.fee }}
+                {% endif %}
+              </li>
+
               <li><strong>Skill Level:</strong> {{ course.get_skill_level_display }}</li>
               <li><strong>Prerequisites:</strong> {{ course.prerequisites }}</li>
             </ul>
@@ -80,17 +88,17 @@
           <div class="card-footer bg-transparent">
             <div class="d-flex align-items-center">
               <div>
-               
+
                 <h6 class="mb-0">Instructor: {{course.instructor}}</h6>
-                
+
               </div>
             </div>
           </div>
 
-          <!-- Demo Class Button -->
+          <!-- Enroll Now Button -->
           <div class="card-footer bg-transparent">
-            <a href="#demo-class" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#demoClassModal">
-              <i class="fas fa-calendar me-2"></i>Book Demo Class
+            <a href="{% url 'payment' course.id %}" class="btn btn-primary w-100">
+              <i class="fas fa-check-circle me-2"></i>Enroll Now
             </a>
           </div>
         </div>
