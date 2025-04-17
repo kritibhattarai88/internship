@@ -1,0 +1,73 @@
+{% extends 'base3.html' %}
+{% block title %}Edit Course - {{ course.name }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4 text-primary">Edit Course - {{ course.name }}</h2>
+
+  <form method="POST" enctype="multipart/form-data" class="bg-light p-4 rounded shadow-sm">
+    {% csrf_token %}
+    
+    <!-- Name Field -->
+    <div class="mb-3">
+      {{ form.name.label_tag }}
+      {{ form.name }}
+      {% if form.name.errors %}
+        <div class="text-danger">{{ form.name.errors }}</div>
+      {% endif %}
+    </div>
+
+    <!-- Description Field -->
+    <div class="mb-3">
+      {{ form.description.label_tag }}
+      {{ form.description }}
+      {% if form.description.errors %}
+        <div class="text-danger">{{ form.description.errors }}</div>
+      {% endif %}
+    </div>
+
+    <!-- Duration and Skill Level Fields -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        {{ form.duration.label_tag }}
+        {{ form.duration }}
+        {% if form.duration.errors %}
+          <div class="text-danger">{{ form.duration.errors }}</div>
+        {% endif %}
+      </div>
+      <div class="col-md-6">
+        {{ form.skill_level.label_tag }}
+        {{ form.skill_level }}
+        {% if form.skill_level.errors %}
+          <div class="text-danger">{{ form.skill_level.errors }}</div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Image Field -->
+    <div class="mb-3">
+      {{ form.image.label_tag }}
+      {{ form.image }}
+      {% if course.image %}
+        <div class="mt-2">
+          <small>Current image:</small><br>
+          <img src="{{ course.image.url }}" alt="{{ course.name }}" style="max-height: 200px;" class="mt-2">
+        </div>
+      {% endif %}
+      {% if form.image.errors %}
+        <div class="text-danger">{{ form.image.errors }}</div>
+      {% endif %}
+    </div>
+
+    <!-- Form Buttons -->
+    <div class="d-flex justify-content-between mt-4">
+      <button type="submit" class="btn btn-success">
+        <i class="fas fa-save me-1"></i> Update Course
+      </button>
+      <a href="{% url 'view_course' course.pk %}" class="btn btn-secondary">
+        <i class="fas fa-times me-1"></i> Cancel
+      </a>
+    </div>
+  </form>
+</div>
+{% endblock %}
