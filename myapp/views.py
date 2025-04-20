@@ -64,17 +64,36 @@ def contact(request):
 
     return render(request, 'main/contact.html', {"date":date})
 
+
 def course(request):
-    course = Course.objects.all()
-    context2={
-        "courses":course,
+    courses = Course.objects.all()
+    
+    # Get sorting parameter from URL
+    sort_by = request.GET.get('sort', '')
+    
+    # Apply sorting
+    if sort_by == 'popularity':
+        courses = courses.order_by('-enrollment_count')
+    elif sort_by == 'newest':
+        courses = courses.order_by('-created_at')
+    elif sort_by == 'price-low-to-high':
+        courses = courses.order_by('fee')
+    elif sort_by == 'price-high-to-low':
+        courses = courses.order_by('-fee')
+    elif sort_by == 'name':
+        courses = courses.order_by('name')
+    # Default sorting (by ID)
+    else:
+        courses = courses.order_by('id')
+    
+    context2 = {
+        "courses": courses,
         "date":date,
     }
-    return render(request, 'main/course.html',context2)
+    return render(request, 'main/course.html', context2)
 
-# def blog(request):
-    
-#     return render(request, 'main/blog.html')
+
+
 def blog_list(request):
     blogs = Blog.objects.all()
     return render(request, 'main/blog_list.html', {'blogs': blogs, 'date':date})
@@ -192,7 +211,11 @@ def khalti_payment_success(request):
     token = request.GET.get("pidx")  # Khalti's payment token
 
     if not token:
-        return JsonResponse({"error": "Invalid payment details."}, status=400)
+        return render(
+            request,
+            "main/paymentfailure.html",
+            {"error": "Missing payment token in callback."},
+        )
 
     verification_url = "https://dev.khalti.com/api/v2/epayment/lookup/"
     headers = {
@@ -202,60 +225,81 @@ def khalti_payment_success(request):
     payload = {"pidx": token}
 
     try:
+        # Verify payment with Khalti
         response = requests.post(verification_url, headers=headers, json=payload)
+        response.raise_for_status()  # Raises exception for 4XX/5XX status codes
+        
+        response_data = response.json()
+        print("Khalti API Response:", response_data)
 
-        # Check if the response is valid JSON
-        try:
-            response_data = response.json()
-            print("Khalti API Response:", response_data)  # Debugging
-        except ValueError:
-            return JsonResponse(
-                {"error": "Invalid response from Khalti API."}, status=500
-            )
-
-        # Handle the response based on the state
-        if response.status_code == 200 and response_data.get("status") == "Completed":
-            # Assuming the course ID is passed through session or another method
+        if response_data.get("status") == "Completed":
+            # Get course from session
             course_id = request.session.get("course_id")
-            print(f"Retrieved course_id from session: {course_id}")  # Debugging
             if not course_id:
                 return render(
                     request,
                     "main/paymentfailure.html",
-                    {"error": "Course not found in session."},
+                    {"error": "Course information not found. Please contact support."},
                 )
 
-            course = Course.objects.get(id=course_id)
+            try:
+                course = Course.objects.get(id=course_id)
+            except Course.DoesNotExist:
+                return render(
+                    request,
+                    "main/paymentfailure.html",
+                    {"error": "Course no longer exists."},
+                )
 
-            # Create or update the payment record
+            # Create payment record
             payment = Payment.objects.create(
                 transaction_id=token,
                 user=request.user,
                 course=course,
-                amount=course.fee,  # Assuming the course.discount contains the correct amount
+                amount=course.fee,
                 payment_method="khalti",
-                status="completed",  # Mark the payment as completed
+                status="completed",
             )
 
-            # Render the success page
-            return render(request, "main/paymentsuccess.html", {"payment": payment})
+            # Create enrollment if not exists
+            enrollment, created = Enrollment.objects.get_or_create(
+                student=request.user,
+                course=course,
+                defaults={'completed': False}
+            )
+
+            # Clear session data
+            request.session.pop('course_id', None)
+            request.session.pop('purchase_order_id', None)
+
+            # Add success message
+            messages.success(request, f"Successfully enrolled in {course.title}!")
+
+            # Redirect to payment success page
+            return render(request, "main/paymentsuccess.html", {
+                "payment": payment,
+                "course": course,
+                "enrollment": enrollment
+            })
 
         else:
             return render(
                 request,
                 "main/paymentfailure.html",
-                {"error": "Payment verification failed."},
+                {"error": f"Payment not completed. Status: {response_data.get('status')}"},
             )
 
     except requests.exceptions.RequestException as e:
+        print(f"Khalti API request failed: {str(e)}")
         return render(
             request,
             "main/paymentfailure.html",
-            {"error": f"Request failed: {str(e)}"},
+            {"error": "Could not verify payment with Khalti. Please check your payment status."},
         )
     except Exception as e:
+        print(f"Unexpected error: {str(e)}")
         return render(
             request,
             "main/paymentfailure.html",
-            {"error": f"An error occurred: {str(e)}"},
+            {"error": "An unexpected error occurred. Please contact support."},
         )

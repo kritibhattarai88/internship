@@ -13,7 +13,7 @@ urlpatterns = [
     path('register/', register_view, name='register'),
     path('logout/', logout_view, name='logout'),
     path("payment/<int:id>", payment, name="payment"),
-    path("initiate", initkhalti, name="initiate"),
+    path("initiate/", initkhalti, name="initiate"),
     path("khalti/paymentsuccess", khalti_payment_success, name="khalti_success")
   
   

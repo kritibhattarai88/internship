@@ -94,14 +94,13 @@
                     <ul class="list-unstyled">
                         <li>
                             {% if user.is_authenticated %}
-                            {% if user.user_type == "student" %}
-                            <li><a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a></li>
-                            {% elif user.user_type == "instructor" %}
-                            
-                            <li><a class="dropdown-item" href="{% url 'instructordashboard' %}">Instructor Dashboard</a></li>
-                            {% endif %}
+                                {% if user.user_type == "student" %}
+                                    <a href="{% url 'dashboard' %}" class="text-white" style="text-decoration: underline;">Dashboard</a>
+                                {% elif user.user_type == "instructor" %}
+                                    <a href="{% url 'instructordashboard' %}" class="text-white" style="text-decoration: underline;">Instructor Dashboard</a>
+                                {% endif %}
                             {% else %}
-                            <a href="{% url 'login' %}" class="text-white">Dashboard</a>
+                                <a href="{% url 'login' %}" class="text-white" style="text-decoration: underline;">Dashboard</a>
                             {% endif %}
                         </li>
                         <li><a href="{% url 'home' %}" class="text-white">Home</a></li>

@@ -19,7 +19,7 @@ Student Dashboard
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-4 py-3" href="#">
+              <a class="nav-link px-4 py-3" href="{% url 'enrolled_courses' %}">
                 <i class="bi bi-journal-bookmark-fill me-3"></i>Enrolled Courses
               </a>
             </li>
@@ -65,6 +65,15 @@ Student Dashboard
                 <h2 class="card-title">Student Dashboard</h2>
                 <p class="card-text">
                   Hello, <strong>{{ user.username }}</strong>! Welcome to your personalized dashboard.
+                </p>
+                <p class="card-text">
+                  We're excited to have you here. This is your space to explore, learn, and grow!
+                </p>
+                <p class="card-text">
+                  You can view your profile, check your enrolled courses, and even apply to become an instructor.
+                </p>
+                <p class="card-text">
+                  Don’t forget to check out our blogs and job placement section for more opportunities.
                 </p>
                 <div class="d-flex align-items-center gap-2 mt-3">
                   <a href="{% url 'profile' %}" class="btn btn-primary">

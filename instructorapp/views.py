@@ -5,6 +5,7 @@ from .forms import CourseForm
 # Create your views here.
 def instructordashboard(request):
     return render(request, "instructor/instructordashboard.html")
+
 def create_course(request):
     if request.method=="POST":
         title= request.POST['name']

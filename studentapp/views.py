@@ -1,9 +1,11 @@
 import re
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import *
+from myapp.models import *
 from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 @login_required
 def dashboard(request):
@@ -53,3 +55,22 @@ def become_instructor(request):
             return redirect('dashboard')
     
     return redirect('dashboard')
+
+@login_required
+def enrolled_courses(request):
+    enrollments = Enrollment.objects.filter(student=request.user).select_related('course')
+    return render(request, 'dashboard/enrolled_courses.html', {
+        'enrollments': enrollments
+    })
+
+def course_player(request, course_id):
+    course = get_object_or_404(Course, id=course_id)
+    
+    # Check if user is enrolled (optional security check)
+    if not request.user.is_authenticated or not course.enrollment_set.filter(student=request.user).exists():
+        return redirect('enrolled_courses')
+    
+    return render(request, 'dashboard/course_player.html', {
+        'course': course,
+        'enrolled': True
+    })

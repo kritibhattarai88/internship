@@ -1,0 +1,79 @@
+<!-- templates/courses/course_player.html -->
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block title %}{{ course.name }} - Player{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+  <div class="row">
+    <!-- Main content area -->
+    <div class="col-md-12">
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h2>{{ course.name }}</h2>
+          <p class="text-muted">Instructor: {{ course.instructor }}</p>
+          
+          <!-- Video Player Section -->
+          <div class="ratio ratio-16x9 mb-4">
+            {% if course.promo_video_url %}
+              <iframe src="{{ course.promo_video_url }}" 
+                      frameborder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowfullscreen></iframe>
+            {% elif course.syllabus_video %}
+              <video controls width="100%">
+                <source src="{{ course.syllabus_video.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            {% else %}
+              <div class="alert alert-info">No video content available for this course</div>
+            {% endif %}
+          </div>
+          
+          <!-- Course Details -->
+          <div class="row">
+            <div class="col-md-8">
+              <h3>Course Description</h3>
+              <p>{{ course.description }}</p>
+              
+              <h3 class="mt-4">Syllabus</h3>
+              {% if course.syllabus_text %}
+                <div class="border p-3 bg-light">
+                  {{ course.syllabus_text|linebreaks }}
+                </div>
+              {% else %}
+                <p>No syllabus details available.</p>
+              {% endif %}
+            </div>
+            
+            <div class="col-md-4">
+              <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                  <h4 class="mb-0">Course Info</h4>
+                </div>
+                <div class="card-body">
+                  <ul class="list-unstyled">
+                    <li class="mb-2"><strong>Duration:</strong> {{ course.get_duration_display }}</li>
+                    <li class="mb-2"><strong>Level:</strong> {{ course.get_skill_level_display }}</li>
+                    <li class="mb-2"><strong>Fee:</strong> Rs. {{ course.fee }}</li>
+                    {% if course.prerequisites %}
+                    <li class="mb-2">
+                      <strong>Prerequisites:</strong> 
+                      <small>{{ course.prerequisites }}</small>
+                    </li>
+                    {% endif %}
+                  </ul>
+                  <a href="{% url 'enrolled_courses' %}" class="btn btn-outline-secondary w-100">
+                    <i class="fas fa-arrow-left me-2"></i> Back to Courses
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

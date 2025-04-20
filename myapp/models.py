@@ -1,3 +1,5 @@
+from django.utils import timezone
+from django.utils.timezone import now
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.text import slugify
@@ -53,7 +55,7 @@ class Course(models.Model):
     blank=True, 
     related_name='courses'
 )
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=300)
     old_fee = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
     description = models.TextField()
     duration = models.CharField(max_length=20, choices=DURATION_CHOICES)
@@ -61,8 +63,13 @@ class Course(models.Model):
     skill_level = models.CharField(max_length=20, choices=SKILL_LEVEL_CHOICES)
     prerequisites = models.TextField(blank=True)
     image = models.ImageField(upload_to='courses/', blank=True, null=True)
-    
-    
+    promo_video_url = models.URLField(max_length=350, blank=True, null=True, help_text="YouTube/Vimeo embed URL")
+    syllabus_video = models.FileField(upload_to='course_videos/', blank=True, null=True, 
+                                   help_text="Upload video file if not using URL")
+    syllabus_text = models.TextField(blank=True, help_text="Detailed course syllabus")
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(auto_now=True)
+
 
     def __str__(self):
         return self.name 
@@ -109,3 +116,16 @@ class Payment(models.Model):
 
     def str(self):
         return f"{self.user.username} - {self.course.title} - {self.payment_method} - {self.status}"
+    
+
+class Enrollment(models.Model):
+    student = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    enrolled_at = models.DateTimeField(auto_now_add=True)
+    completed = models.BooleanField(default=False)
+    
+    class Meta:
+        unique_together = ('student', 'course')
+        
+    def __str__(self):
+        return f"{self.student.username} enrolled in {self.course.title}"
