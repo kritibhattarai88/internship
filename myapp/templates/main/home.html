@@ -49,52 +49,66 @@ Home
   </section>
 
   <!-- Why Choose Us Section -->
-  <section class="why-choose-us py-5 bg-light">
-    <div class="container">
-      <h2 class="text-center mb-5">Why Choose Us?</h2>
-      <div class="row text-center">
-        <!-- Industry Experts -->
-        <div class="col-md-4 mb-4">
-          <div class="icon-wrapper mb-3">
-            <i class="fas fa-user-tie fa-3x text-primary"></i>
+<section class="why-choose-us py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5 fw-bold text-primary">Why Choose Us?</h2>
+    <div class="row g-4 justify-content-center">
+      
+      <!-- Card: Industry Experts -->
+      <div class="col-md-4">
+        <div class="card h-100 text-center border-0 shadow-lg rounded-4 p-4 bg-white transition hover-zoom">
+          <div class="icon-wrapper mx-auto mb-4 d-flex align-items-center justify-content-center rounded-circle" style="width: 80px; height: 80px; background: linear-gradient(135deg, #6a11cb, #2575fc); color: white;">
+            <i class="fas fa-user-tie fa-2x"></i>
           </div>
-          <h4>Industry Experts</h4>
+          <h4 class="fw-bold text-primary">Industry Experts</h4>
           <p class="text-muted">Learn from experienced professionals with real-world IT expertise.</p>
         </div>
+      </div>
 
-        <!-- Certification Preparation -->
-        <div class="col-md-4 mb-4">
-          <div class="icon-wrapper mb-3">
-            <i class="fas fa-certificate fa-3x text-primary"></i>
+      <!-- Card: Certification Prep -->
+      <div class="col-md-4">
+        <div class="card h-100 text-center border-0 shadow-lg rounded-4 p-4 bg-white transition hover-zoom">
+          <div class="icon-wrapper mx-auto mb-4 d-flex align-items-center justify-content-center rounded-circle" style="width: 80px; height: 80px; background: linear-gradient(135deg, #00c6ff, #0072ff); color: white;">
+            <i class="fas fa-certificate fa-2x"></i>
           </div>
-          <h4>Certification Prep</h4>
+          <h4 class="fw-bold text-primary">Certification Prep</h4>
           <p class="text-muted">Get ready for globally recognized certifications with our tailored courses.</p>
         </div>
+      </div>
 
-        <!-- Corporate Workshops -->
-        <div class="col-md-4 mb-4">
-          <div class="icon-wrapper mb-3">
-            <i class="fas fa-chalkboard-teacher fa-3x text-primary"></i>
+      <!-- Card: Corporate Workshops -->
+      <div class="col-md-4">
+        <div class="card h-100 text-center border-0 shadow-lg rounded-4 p-4 bg-white transition hover-zoom">
+          <div class="icon-wrapper mx-auto mb-4 d-flex align-items-center justify-content-center rounded-circle" style="width: 80px; height: 80px; background: linear-gradient(135deg, #ff4e50, #f9d423); color: white;">
+            <i class="fas fa-chalkboard-teacher fa-2x"></i>
           </div>
-          <h4>Corporate Workshops</h4>
-          <p class="text-muted">Customized training programs designed for your organization's needs.</p>
+          <h4 class="fw-bold text-primary">Corporate Workshops</h4>
+          <p class="text-muted">Customized training programs designed for your organization’s needs.</p>
         </div>
       </div>
 
-      <!-- Success Stats -->
-      <div class="row mt-5">
-        <div class="col-md-12 text-center">
-          <h4 class="fw-bold"><i class="fas fa-users me-2 text-primary"></i>Over 5,000 Students Trained & Placed</h4>
-          <p class="text-muted">Join our community of successful learners and start your IT career today!</p>
-        </div>
+    </div>
+
+    <!-- Success Stats -->
+    <div class="row mt-5">
+      <div class="col-md-12 text-center">
+        <h4 class="fw-bold text-primary">
+          <i class="fas fa-users me-2"></i>Over 5,000 Students Trained & Placed
+        </h4>
+        <p class="text-muted">Join our community of successful learners and start your IT career today!</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
  <!-- Testimonials Section -->
-<div class="container my-3" data-aos="fade-down" data-aos-duration="1000">
-  <h2 class="text-center">Testimonials</h2>
-  <p class="text-muted text-center mb-5">Learning communicates to the global world and builds a bright future and career development. Increase your skill with our IT Training Hub.</p>
+<div class="container my-5 py-5 rounded-4 shadow-sm bg-light-subtle" data-aos="fade-down" data-aos-duration="1000">
+  <h2 class="text-center text-primary fw-bold mb-3">Testimonials</h2>
+  <p class="text-muted text-center mb-5 px-md-5">
+    Learning communicates to the global world and builds a bright future and career development. Increase your skill with our IT Training Hub.
+  </p>
+
   <!-- Testimonial Carousel -->
   <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -104,12 +118,12 @@ Home
             <div class="row row-cols-1 row-cols-md-3 g-4">
         {% endif %}
               <div class="col">
-                <div class="card h-100 shadow-sm text-center p-3">
-                  <img src="{% if testimonial.photo %}{{ testimonial.photo.url }}{% else %}{% static 'images/default-user.png' %}{% endif %}" class="rounded-circle mx-auto" alt="{{ testimonial.student_name }}" width="100" height="100">
+                <div class="card h-100 text-center border-0 shadow-lg p-4 testimonial-card bg-gradient bg-white bg-opacity-75">
+                  <img src="{% if testimonial.photo %}{{ testimonial.photo.url }}{% else %}{% static 'images/default-user.png' %}{% endif %}" class="rounded-circle mx-auto shadow" alt="{{ testimonial.student_name }}" width="100" height="100">
                   <div class="card-body">
-                    <h5 class="card-title">{{ testimonial.student_name }}</h5>
-                    <p class="text-muted">{{ testimonial.position }}</p>
-                    <p class="card-text">"{{ testimonial.testimonial }}"</p>
+                    <h5 class="card-title fw-bold text-dark">{{ testimonial.student_name }}</h5>
+                    <p class="text-primary fw-semibold small">{{ testimonial.position }}</p>
+                    <p class="card-text fst-italic text-secondary">"{{ testimonial.testimonial }}"</p>
                     <div class="text-warning">
                       {% for _ in "12345" %}
                         {% if forloop.counter <= testimonial.rating %}
@@ -128,22 +142,24 @@ Home
         {% endif %}
       {% endfor %}
     </div>
+
     <!-- Carousel Controls -->
     <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
   </div>
 </div>
 
+
 <!-- Courses Section --> 
 <section class="courses-section py-5">  <!-- Added proper section tag -->
   <div class="container">
-    <h2 class="text-center mb-4">Featured Courses</h2>  <!-- Added heading -->
+    <h2 class="text-center mb-4 text-primary">Featured Courses</h2>  <!-- Added heading -->
     
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
       {% for course in courses %}

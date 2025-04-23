@@ -176,7 +176,7 @@ def payment(request ,id):
 
 def initkhalti(request):
     if request.method == "POST":
-        print(f"POST data: {request.POST}")
+       
         purchase_order_id = request.POST.get("purchase_order_id")
         fee = int(float(request.POST.get("amount")) * 100)  # Convert NPR to Paisa
         course_id = request.POST.get("course_id")
@@ -273,7 +273,7 @@ def khalti_payment_success(request):
             request.session.pop('purchase_order_id', None)
 
             # Add success message
-            messages.success(request, f"Successfully enrolled in {course.title}!")
+            messages.success(request, f"Successfully enrolled in {course.name}!")
 
             # Redirect to payment success page
             return render(request, "main/paymentsuccess.html", {

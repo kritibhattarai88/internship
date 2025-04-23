@@ -115,7 +115,7 @@ class Payment(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="pending")
 
     def str(self):
-        return f"{self.user.username} - {self.course.title} - {self.payment_method} - {self.status}"
+        return f"{self.user.username} - {self.course.name} - {self.payment_method} - {self.status}"
     
 
 class Enrollment(models.Model):
@@ -128,4 +128,4 @@ class Enrollment(models.Model):
         unique_together = ('student', 'course')
         
     def __str__(self):
-        return f"{self.student.username} enrolled in {self.course.title}"
+        return f"{self.student.username} enrolled in {self.course.name}"
